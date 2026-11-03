@@ -1,0 +1,64 @@
+vehicle_type=input("enter the vehicle type :").lower()
+hours=float(input("enter the hours :"))
+
+if vehicle_type not in ["car","suv","bike"]:
+    print("Invalid vehicle type")
+
+elif hours<=0:
+    print("Invalid parking duration")
+
+else:
+    if hours<1:
+        hours=1
+
+    if "car" in vehicle_type:
+        if 1<hours<=2:
+            n=0
+            parking_fee=50
+        elif hours>2:
+            n=hours-2
+            t=n%1>0
+            g=n//1
+            if t==True:
+                n=g+1
+                parking_fee=50+(n*20)
+            else:
+                parking_fee=50+(n*20)
+        elif hours<=1:
+            parking_fee=50
+
+    elif "suv" in vehicle_type:
+        if 1<hours<=2:
+            n=0
+            parking_fee=70
+        elif hours>2:
+            n=hours-2
+            t=n%1>0
+            g=n//1
+            if t==True:
+                n=g+1
+                parking_fee=70+(n*30)
+            else:
+                parking_fee=70+(n*30)
+        elif hours<=1:
+            parking_fee=70
+
+    elif "bike" in vehicle_type:
+        if 1<hours<=2:
+            n=0
+            parking_fee=30
+        elif hours>2:
+            n=hours-2
+            t=n%1>0
+            g=n//1
+            if t==True:
+                n=g+1
+                parking_fee=30+(n*10)
+            else:
+                parking_fee=30+(n*10)
+        elif hours<=1:
+            parking_fee=30
+
+    print(vehicle_type)
+    print(hours)
+    print(f"parking fee : {parking_fee:.0f}")

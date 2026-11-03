@@ -1,0 +1,45 @@
+shows=int(input("Enter number of shows: "))
+
+booked_seats=0
+available_seats=0
+high_count=0
+highest=-1
+best_show=""
+
+for i in range(shows):
+    show_name=input("Enter the Show Name: ")
+    seats=int(input("Total Seats: "))
+    booked=int(input("Booked Seats: "))
+
+    available=seats-booked
+    percent=(booked/seats)*100
+
+    if percent>=80:
+        category="House Full"
+    elif percent>=60:
+        category="High Demand"
+    elif percent>=40:
+        category="Moderate"
+    else:
+        category="Low Demand"
+
+    print(show_name)
+    print(f"Available: {available}")
+    print(f"Occupancy: {percent:.2f}%")
+    print(category)
+
+    booked_seats=booked_seats+booked
+    available_seats=available_seats+available
+
+    if category=="High Demand" or category=="House Full":
+        high_count=high_count+1
+
+    if percent>highest:
+        highest=percent
+        best_show=show_name
+
+print()
+print(f"Highest Occupancy: {best_show}")
+print(f"Total Booked Seats: {booked_seats}")
+print(f"Total Available Seats: {available_seats}")
+print(f"High Demand/House Full Shows: {high_count}")
